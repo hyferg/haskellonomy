@@ -17,7 +17,8 @@ case $1 in
 # Modified a bit...
 1) stack ghc -- -dynamic -O2 --make \
     -no-hs-main -optl '-shared' -optc '-DMODULE=Test' \
-    -odir ./build \
+    -odir './build/' \
+    -hidir './build/' \
     -o ./build/HoloLib.so ./src/Lib.hs module_init.c
 ;;
 

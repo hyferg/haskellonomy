@@ -1,3 +1,5 @@
+*_stub.h
+build/
 *.cabal
 dist
 dist-*

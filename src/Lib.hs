@@ -4,7 +4,9 @@ module Lib
     ( out
     ) where
 
+import Foreign.Ptr
 import Foreign.C.Types
+import Foreign.Marshal.Array
 import Integrator
 import HoloTypes
 import R2P
@@ -42,5 +44,19 @@ hsfun x = do
     putStrLn "Hello World"
     return (42 + x)
 
+aList :: IO (Ptr CFloat)
+aList = newArray [1.0,2.0,3.0]
+
+reverseList :: CInt -> (Ptr Float) -> IO (Ptr Float)
+reverseList len lst_f = do
+  fs <- peekArray (fromIntegral len) lst_f
+  newArray $ reverse fs
+
+foreign export ccall
+  reverseList :: CInt -> (Ptr Float) -> IO (Ptr Float)
+
 foreign export ccall
     hsfun :: CInt -> IO CInt
+
+foreign export ccall
+    aList :: IO (Ptr CFloat)
