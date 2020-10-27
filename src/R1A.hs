@@ -17,7 +17,7 @@ instance Group R1A where
   invert (R1A a) = R1A (-a)
 
 instance VectorSpace R1A where
-  origin = R1A 0
+  origin = mempty
   (^+^) (R1A a) (R1A b) = R1A (a+b)
   (^*) (R1A a) s = R1A (s*a)
   (*^) s (R1A a) = R1A (s*a)

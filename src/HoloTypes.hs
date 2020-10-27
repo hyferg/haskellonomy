@@ -24,8 +24,8 @@ class (VectorSpace p) => BasePoint p
 
 -- addition is not defined on the group
 -- with a hand wave, it is defined in the linearisation
--- step is a linear approximation of movement in the group
--- step :: ( G, T_{e}G ) --> G
--- step :: (g, A) |--> g + A
+-- (^+^) is a linear approximation of movement in the group
+-- (^+^) :: ( G, T_{e}G ) --> G
+-- (^+^) :: (g, A) |--> g + A
 -- where A is small
 class (Group f, VectorSpace f) => FiberPoint f where
