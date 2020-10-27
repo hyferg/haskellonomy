@@ -1,12 +1,31 @@
 -- |
 
-module HoloTypes where
+module HoloTypes (
+  (^*), (*^), (^+^), (^-^), _invert, origin,
+  BasePoint,
+  FiberPoint,
+  VectorSpace,
+  ) where
 
---type BasePoint = (Float, Float)
-type FiberPoint = Float
+import Data.Group
 
-class BasePoint bp where
-  (^+^), (^-^)  :: bp -> bp -> bp
-  (^*) :: bp -> Float -> bp
-  (*^) :: Float -> bp -> bp
-  dot :: bp -> bp -> FiberPoint
+class VectorSpace v where
+  origin :: v
+  (^*) :: v -> Float -> v
+  (*^) :: Float -> v -> v
+  (^+^), (^-^)  :: v -> v -> v
+  _invert :: v -> v
+
+  (^-^) p1 p2 = p1 ^+^ (_invert p2)
+  _invert p1 = origin ^-^ p1
+
+-- in a Euclidean neighborhood
+class (VectorSpace p) => BasePoint p
+
+-- addition is not defined on the group
+-- with a hand wave, it is defined in the linearisation
+-- step is a linear approximation of movement in the group
+-- step :: ( G, T_{e}G ) --> G
+-- step :: (g, A) |--> g + A
+-- where A is small
+class (Group f, VectorSpace f) => FiberPoint f where

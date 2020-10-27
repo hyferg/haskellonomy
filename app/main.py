@@ -1,20 +1,19 @@
-from ctypes import *
+"""ship data to haskell and back
+"""
+from ctypes import POINTER, CDLL, c_float
+import numpy as np
 
 lib = CDLL("./build/HoloLib.so")
 
-# Test simple function
-# print(lib.hsfun(5))
-
-#   lib.aList.restype = POINTER(c_float)
-#   xs = lib.aList()
-#   for i in range(3):
-#       print(xs[i])
-
+__xs = np.linspace(0, 1, 5)
+LEN_XS = len(__xs)
+_xs = (c_float * LEN_XS)(*__xs)
 
 lib.reverseList.restype = POINTER(c_float)
-__xs = [1.0, 2.0, 3.0]
-_xs = (c_float * 3)(*__xs)
-xs = lib.reverseList(len(_xs), _xs)
+xs = lib.reverseList(LEN_XS, _xs)
 
-for i in range(len(_xs)):
-    print(xs[i])
+xsnp = np.ctypeslib.as_array(xs, shape=[LEN_XS])
+
+
+class R2Lift(Structure):
+    _fields_ = [("x", c_float), ("y", c_float), ("z", c_float)]

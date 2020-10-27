@@ -41,6 +41,8 @@ packages:
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
 # extra-deps: []
+extra-deps:
+  - groups-0.5@sha256:6a0b92ffd2828607fcd62c9f1927a7e5e6f6ec9ea90c877789478132c0290f63,690
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

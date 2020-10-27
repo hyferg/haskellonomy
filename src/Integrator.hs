@@ -6,20 +6,23 @@ module Integrator
 
 import HoloTypes
 
-euler :: (BasePoint bp) =>
-         (bp -> FiberPoint -> bp) ->
-         (bp, FiberPoint) -> bp -> (bp, FiberPoint)
-euler f (t, y) t' = (t', y + h `dot` f t y)
-    where
-    h = t' ^-^ t
+euler :: (BasePoint m, FiberPoint g) =>
+        (m -> m) -> (m -> m -> g) -> (m, g) -> m -> (m, g)
+euler w step (m, g) m' = (m', g ^+^ g')
+  where
+    h = m' ^-^ m
+    g' = h `step` w m
 
-rk :: (BasePoint bp) =>
-      (bp -> FiberPoint -> bp) ->
-      (bp, FiberPoint) -> bp -> (bp, FiberPoint)
-rk f (t, y) t' = (t', y + h`dot`(k1 ^+^ (2.0*^k2) ^+^ (2.0*^k3) ^+^ k4)/6.0)
-    where
-        h  = t' ^-^ t
-        k1 = f t y
-        k2 = f (t ^+^ (0.5*^h)) (y + 0.5*^h`dot`k1)
-        k3 = f (t ^+^ (0.5*^h)) (y + 0.5*^h`dot`k2)
-        k4 = f (t ^+^ (1.0*^h)) (y + 1.0*^h`dot`k3)
+
+rk :: (BasePoint m, FiberPoint g) =>
+        (m -> m) -> (m -> m -> g) -> (m, g) -> m -> (m, g)
+rk w step (m, g) m' = (m', g ^+^ g')
+  where
+    h = m' ^-^ m
+
+    k1 = w m
+    k2 = w ( m ^+^ (0.5*^h ) )
+    k3 = w ( m ^+^ (0.5*^h ) )
+    k4 = w ( m ^+^ (1.0*^h ) )
+
+    g' = h `step` (k1 ^+^ (2.0*^k2) ^+^ (2.0*^k3) ^+^ k4)^*(1.0/6.0)
