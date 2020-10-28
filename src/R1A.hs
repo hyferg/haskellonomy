@@ -8,7 +8,7 @@ import HoloTypes
 data R1A = R1A Float deriving(Show)
 
 instance Semigroup R1A where
-  (<>) (R1A a) (R1A b) = R1A (a + b)
+  (<>) (R1A a) (R1A b) = R1A (a * b)
 
 instance Monoid R1A where
   mempty = R1A 0
@@ -23,4 +23,5 @@ instance VectorSpace R1A where
   (*^) s (R1A a) = R1A (s*a)
   _invert = invert
 
-instance FiberPoint R1A
+instance FiberPoint R1A where
+  exponential (R1A a) = R1A $ exp a

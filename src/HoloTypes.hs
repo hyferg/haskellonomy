@@ -3,7 +3,7 @@
 module HoloTypes (
   (^*), (*^), (^+^), (^-^), _invert, origin,
   BasePoint,
-  FiberPoint,
+  FiberPoint, exponential,
   VectorSpace,
   ) where
 
@@ -29,3 +29,4 @@ class (VectorSpace p) => BasePoint p
 -- (^+^) :: (g, A) |--> g + A
 -- where A is small
 class (Group f, VectorSpace f) => FiberPoint f where
+  exponential :: f -> f

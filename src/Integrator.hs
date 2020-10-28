@@ -16,7 +16,7 @@ euler w step (m, g) m' = (m', g ^+^ g')
 
 rk :: (BasePoint m, FiberPoint g) =>
         (m -> m) -> (m -> m -> g) -> (m, g) -> m -> (m, g)
-rk w step (m, g) m' = (m', g ^+^ g')
+rk w step (m, g) m' = (m', exponential g' <> g )
   where
     h = m' ^-^ m
 

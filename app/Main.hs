@@ -3,4 +3,5 @@ module Main where
 import Lib
 
 main :: IO ()
-main = out
+main = do
+  writeFile "./app/out.txt" out
