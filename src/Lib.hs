@@ -49,12 +49,12 @@ initial = (m, g0)
 --
 -- ..or..
 --
--- scanl lift(g0, m0) [m1, m2, ...] = [
+-- scanl lift (g0, m0) [m1, m2, ...] = [
 -- (m0, g0),
 -- (m1, g1 <> g0),
 -- (m2, g2 <> g1 <> g0),
 -- ...
--- (mn, gn <> ... <> g1 <> g0),
+-- (mn, gn <> .. <> g1 <> g0),
 --
 -- where <> is the group action and `mn` is the last point
 -- in the base manifold curve
