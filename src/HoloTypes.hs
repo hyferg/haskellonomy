@@ -1,10 +1,14 @@
--- |
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE FunctionalDependencies #-}
+-- | Constraints for a proper fiber integrator
 
 module HoloTypes (
+  VectorSpace,
   (^*), (*^), (^+^), (^-^), _invert, origin,
   BasePoint,
-  FiberPoint, exponential,
-  VectorSpace,
+  LieAlgebra,
+  LieGroup,
+  exponential,
   ) where
 
 import Data.Group
@@ -20,13 +24,9 @@ class VectorSpace v where
   _invert p1 = origin ^-^ p1
 
 -- in a Euclidean neighborhood
-class (VectorSpace p) => BasePoint p
+class (VectorSpace m) => BasePoint m
 
--- addition is not defined on the group
--- with a hand wave, it is defined in the linearisation
--- (^+^) is a linear approximation of movement in the group
--- (^+^) :: ( G, T_{e}G ) --> G
--- (^+^) :: (g, A) |--> g + A
--- where A is small
-class (Group f, VectorSpace f) => FiberPoint f where
-  exponential :: f -> f
+class (VectorSpace l) => LieAlgebra l
+
+class (LieAlgebra l, Group g) => LieGroup l g | g -> l where
+  exponential :: l -> g

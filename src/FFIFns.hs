@@ -5,7 +5,6 @@ module FFIFns where
 import Foreign.Ptr
 import Foreign.C.Types
 import Foreign.Marshal.Array
-import HoloTypes
 
 reverseList :: CInt -> (Ptr Float) -> IO (Ptr Float)
 reverseList len lst_f = do

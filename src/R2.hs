@@ -14,6 +14,3 @@ instance VectorSpace R2 where
   _invert (R2 a b) = R2 (-a) (-b)
 
 instance BasePoint R2
-
--- instance Show R2 where
---   show (R2 a b) = "(" ++ (show a) ++ "," ++ (show b) ++ ")"
