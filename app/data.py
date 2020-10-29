@@ -1,4 +1,6 @@
-"""ship data to haskell and back
+"""
+example of how to ship data to haskell and back
+useful later for live interfacing with the ODE solver
 """
 from ctypes import POINTER, CDLL, c_float
 import numpy as np
