@@ -32,6 +32,6 @@ The typeclasses are in  'src/HoloTypes'.
 
 Use [stack](https://docs.haskellstack.org/en/stable/README/)
 
-- stack install (compile to file)
-- stack run (run the program)
+- stack install (compile to file) or ...
+- stack run (run the program) or ...
 - stack ghci (use the library interactively)
