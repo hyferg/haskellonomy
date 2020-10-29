@@ -1,4 +1,4 @@
--- | Fiber for group of positive reals under multiplication
+-- | Group of positive reals under multiplication
 
 {-# LANGUAGE MultiParamTypeClasses #-}
 

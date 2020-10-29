@@ -1,4 +1,4 @@
--- | Fiber for group of reals under addition
+-- | Group of reals under addition
 
 {-# LANGUAGE MultiParamTypeClasses #-}
 
