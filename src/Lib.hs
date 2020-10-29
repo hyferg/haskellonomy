@@ -66,10 +66,10 @@ lifted = scanl (rk w) initial ms
 -- format string for numpy.loadtxt
 
 lift :: String
-lift = showjson $ Rows $ map (\(R2 a b, R1_PM c) -> Row [a, b, c]) lifted
+lift = showcsv $ Rows $ map (\(R2 a b, R1_PM c) -> Row [a, b, c]) lifted
 
 hori :: String
-hori = showjson $ Rows $ horizontals lifted
+hori = showcsv $ Rows $ horizontals lifted
 
 --
 
