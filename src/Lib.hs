@@ -1,8 +1,9 @@
-module Lib (out) where
+module Lib (lift, hori) where
 
-import Integrator
+import Integrator (rk)
 import R2
 import R1M
+import Data.List
 
 -- initial group section
 g0 :: R1
@@ -64,17 +65,43 @@ lifted = scanl (rk w) initial ms
 
 -- format string for numpy.loadtxt
 
-data Point = P (R2, R1)
-data Curve = C [Point]
+lift :: String
+lift = show $ Rows $ map (\(R2 a b, R1 c) -> Row [a, b, c]) lifted
 
-instance Show Point where
-  show (P (R2 a b, R1 c)) =
-    (show a) ++ " " ++ (show b) ++ " " ++ (show c) ++ "\n"
- 
-instance Show Curve where
-   show (C nps) = concat $ map show nps
+hori :: String
+hori = show $ Rows $ horizontals lifted
 
--- ship the formatted string
+--
 
-out :: String
-out = show $ C $ map (P) lifted
+-- (x, y, z, unit dx, unit dy)
+horizontals :: [(R2, R1)] -> [Row]
+horizontals curve = polys
+  where
+
+    xs = map (\(R2 x _, _) -> x) curve
+    ys = map (\(R2 _ y, _) -> y) curve
+    zs = map (\(_, R1 z) -> z) curve
+
+    range :: Float -> Float -> Float -> [Float]
+    range lower step upper =
+      map (\x -> x*(upper-lower) + lower) [0, step .. 1]
+
+    xgrid = range (minimum xs) 0.33 (maximum xs)
+    ygrid = range (minimum ys) 0.33 (maximum ys)
+    zgrid = range (0) 0.15 (maximum zs)
+
+    lie (TeR1 a) = a
+
+    polys = [ Row [ x, y, z,
+                    z * (lie $ w (R2 x y) (R2 1 0)),
+                    z * (lie $ w (R2 x y) (R2 0 1)) ]
+            | x <- xgrid, y <- ygrid, z <- zgrid ]
+
+data Row = Row [Float]
+data Rows = Rows [Row]
+
+instance Show Row where
+  show (Row xs) = (++ "\n") $ concat (intersperse " " (map show xs))
+
+instance Show Rows where
+  show (Rows xs) = concat $ map show xs

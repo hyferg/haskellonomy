@@ -4,4 +4,5 @@ import Lib
 
 main :: IO ()
 main = do
-  writeFile "./app/out.txt" out
+  writeFile "./app/hori.txt" hori
+  writeFile "./app/lift.txt" lift
