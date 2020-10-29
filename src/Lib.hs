@@ -2,12 +2,12 @@ module Lib (lift, hori) where
 
 import Integrator (rk)
 import Manifold.R2
-import Fiber.R1M
+import Fiber.R1_PM
 import Data.List
 
 -- initial group section
-g0 :: R1
-g0 = R1 2
+g0 :: R1_PM
+g0 = R1_PM 2
 
 -- parameters of g(t) curve
 ts :: [Float]
@@ -20,8 +20,8 @@ gamma t = R2
   (sin(2*pi*t)+2)
 
 -- local representation of a connection, a YM field
-w :: R2 -> R2 -> TeR1
-w (R2 x y) (R2 dx dy) = TeR1 (w0*dx + w1*dy)
+w :: R2 -> R2 -> TeR1_PM
+w (R2 x y) (R2 dx dy) = TeR1_PM (w0*dx + w1*dy)
     where
       w0 = (-y)/(1+x*y)
       w1 = 0
@@ -32,7 +32,7 @@ m  ::  R2
 ms :: [R2]
 (m:ms) = map gamma ts
 
-initial :: (R2, R1)
+initial :: (R2, R1_PM)
 initial = (m, g0)
 
 --
@@ -60,13 +60,13 @@ initial = (m, g0)
 -- where <> is the group action and `mn` is the last point
 -- in the base manifold curve
 
-lifted :: [(R2, R1)]
+lifted :: [(R2, R1_PM)]
 lifted = scanl (rk w) initial ms
 
 -- format string for numpy.loadtxt
 
 lift :: String
-lift = showjson $ Rows $ map (\(R2 a b, R1 c) -> Row [a, b, c]) lifted
+lift = showjson $ Rows $ map (\(R2 a b, R1_PM c) -> Row [a, b, c]) lifted
 
 hori :: String
 hori = showjson $ Rows $ horizontals lifted
@@ -74,13 +74,13 @@ hori = showjson $ Rows $ horizontals lifted
 --
 
 -- (x, y, z, unit dx, unit dy)
-horizontals :: [(R2, R1)] -> [Row]
+horizontals :: [(R2, R1_PM)] -> [Row]
 horizontals curve = polys
   where
 
     xs = map (\(R2 x _, _) -> x) curve
     ys = map (\(R2 _ y, _) -> y) curve
-    zs = map (\(_, R1 z) -> z) curve
+    zs = map (\(_, R1_PM z) -> z) curve
 
     range :: Float -> Float -> Float -> [Float]
     range lower step upper =
@@ -90,7 +90,7 @@ horizontals curve = polys
     ygrid = range (minimum ys) 0.33 (maximum ys)
     zgrid = range (0) 0.15 (maximum zs)
 
-    lie (TeR1 a) = a
+    lie (TeR1_PM a) = a
 
     polys = [ Row [ x, y, z,
                     z * (lie $ w (R2 x y) (R2 1 0)),
