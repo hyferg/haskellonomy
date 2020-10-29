@@ -1,6 +1,6 @@
 -- | R^{2} Flat Base Manifold
 
-module R2 where
+module Manifold.R2 where
 
 import HoloTypes
 

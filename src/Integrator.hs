@@ -1,3 +1,6 @@
+-- | Euler and Runge-Kutta integrators.
+-- | These use the group action <> for stepped changes.
+
 module Integrator
   ( euler, rk
   ) where

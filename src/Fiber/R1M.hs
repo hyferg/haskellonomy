@@ -1,7 +1,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 -- | Fiber for group of positive reals under multiplication
 
-module R1M where
+module Fiber.R1M where
 
 import Data.Group
 import HoloTypes

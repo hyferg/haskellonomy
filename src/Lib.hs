@@ -1,8 +1,8 @@
 module Lib (lift, hori) where
 
 import Integrator (rk)
-import R2
-import R1M
+import Manifold.R2
+import Fiber.R1M
 import Data.List
 
 -- initial group section
@@ -66,10 +66,10 @@ lifted = scanl (rk w) initial ms
 -- format string for numpy.loadtxt
 
 lift :: String
-lift = show $ Rows $ map (\(R2 a b, R1 c) -> Row [a, b, c]) lifted
+lift = showjson $ Rows $ map (\(R2 a b, R1 c) -> Row [a, b, c]) lifted
 
 hori :: String
-hori = show $ Rows $ horizontals lifted
+hori = showjson $ Rows $ horizontals lifted
 
 --
 
@@ -97,11 +97,25 @@ horizontals curve = polys
                     z * (lie $ w (R2 x y) (R2 0 1)) ]
             | x <- xgrid, y <- ygrid, z <- zgrid ]
 
+-- string formatting methods
+
 data Row = Row [Float]
 data Rows = Rows [Row]
 
-instance Show Row where
-  show (Row xs) = (++ "\n") $ concat (intersperse " " (map show xs))
+class ShowCSV x where
+  showcsv :: x -> String
 
-instance Show Rows where
-  show (Rows xs) = concat $ map show xs
+class ShowJSON x where
+  showjson :: x -> String
+
+instance ShowCSV Row where
+  showcsv (Row xs) = (++ "\n") $ concat (intersperse " " (map show xs))
+
+instance ShowCSV Rows where
+  showcsv (Rows xs) = concat $ map showcsv xs
+
+instance ShowJSON Row where
+  showjson (Row xs) = "[" ++ (concat $ intersperse "," (map show xs)) ++ "]"
+
+instance ShowJSON Rows where
+  showjson (Rows xs) = "[" ++ (concat $ intersperse "," (map showjson xs)) ++ "]"

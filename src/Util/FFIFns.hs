@@ -1,6 +1,9 @@
--- |
+-- | Example of how to export shared library.
+-- | Useful later if the integrator needs to be used in realtime.
 
-module FFIFns where
+{-# LANGUAGE ForeignFunctionInterface #-}
+
+module Util.FFIFns where
 
 import Foreign.Ptr
 import Foreign.C.Types

@@ -1,6 +1,8 @@
+-- | Constraints for objects used in a fiber integrator.
+-- | These keep everything safe and closer to rigor than not.
+
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FunctionalDependencies #-}
--- | Constraints for a proper fiber integrator
 
 module HoloTypes (
   VectorSpace,
@@ -28,5 +30,5 @@ class (VectorSpace m) => BasePoint m
 
 class (VectorSpace l) => LieAlgebra l
 
-class (LieAlgebra l, Group g) => LieGroup l g | g -> l where
+class (LieAlgebra l, Group g) => LieGroup l g where
   exponential :: l -> g
