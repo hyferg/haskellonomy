@@ -2,7 +2,7 @@
 
 ![example](media/header.png)
 
-Go checkout **src/Lib.hs** to see it in action.
+Go checkout <**src/Lib.hs**> to see it in action.
 
 This follows from initial work done by Eric Weinstein.
 
@@ -41,5 +41,5 @@ Use [stack](https://docs.haskellstack.org/en/stable/README/)
 Further extensions could be ...
 - Make it run on hairy balls. That is to say base manifolds that don't admit a global section of the tangent bundle
 - Add curvature to the equation
-- Link up generic associated bundles with right group action.
-- Link up associated vector bundles with reps of the right action.
+- Link up generic associated bundles with right group action
+- Link up associated vector bundles with reps of the right action
