@@ -16,6 +16,14 @@ This program is at it's core an ODE solver that respects some group action. The 
 - Base manifold
     - R1, R2, R3
 
+## What can't this do yet
+
+Further extensions could be ...
+- Make it run on hairy balls. That is to say base manifolds that don't admit a global section of the tangent bundle
+- Add curvature to the equation
+- Link up generic associated bundles with right group action
+- Link up associated vector bundles with reps of the right action
+
 ## How to add a new base manifold or fiber type
 
 The typeclasses are in  'src/HoloTypes'.
@@ -36,10 +44,3 @@ Use [stack](https://docs.haskellstack.org/en/stable/README/)
 - stack run (run the program) or ...
 - stack ghci (use the library interactively)
 
-## What can't this do yet
-
-Further extensions could be ...
-- Make it run on hairy balls. That is to say base manifolds that don't admit a global section of the tangent bundle
-- Add curvature to the equation
-- Link up generic associated bundles with right group action
-- Link up associated vector bundles with reps of the right action
