@@ -2,7 +2,7 @@
 
 ![example](media/header.png)
 
-**Go checkout src/Lib.hs for an explanation.**
+Go checkout **src/Lib.hs** to see it in action.
 
 This follows from initial work done by Eric Weinstein.
 
