@@ -29,4 +29,4 @@ instance VectorSpace TeR1_A where
 instance LieAlgebra TeR1_A
 
 instance LieGroup (TeR1_A) (R1_A) where
-  exponential (TeR1_A a) = R1_A $ exp a
+  exponential (TeR1_A a) = R1_A $ a
