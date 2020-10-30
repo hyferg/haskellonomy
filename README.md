@@ -26,7 +26,7 @@ Further extensions could be ...
 
 ## How to add a new base manifold or fiber type
 
-The typeclasses are in  'src/HoloTypes'.
+The typeclasses are in [ **src/HoloTypes** ].
 
 - Fiber
   - Needs one datatype to have Group
