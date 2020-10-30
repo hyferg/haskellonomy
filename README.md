@@ -31,7 +31,7 @@ The typeclasses are in  'src/HoloTypes'.
 - Fiber
   - Needs one datatype to have Group
   - Another datatype to have VectorSpace & LieAlgebra
-  - Both of these need to instantiate LieGroup with an exponential map from the LieAlgebra to the Group 
+  - This pair then instantiates LieGroup with an exponential map from the LieAlgebra to the Group 
 
 - Manifold
     - Needs to have VectorSpace and BasePoint
