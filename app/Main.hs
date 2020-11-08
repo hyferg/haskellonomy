@@ -1,8 +1,7 @@
 module Main where
 
-import Lib
+import U1Curve
 
 main :: IO ()
 main = do
-  writeFile "./app/hori.txt" hori
-  writeFile "./app/lift.txt" lift
+  writeFile "./app/liftU1.txt" lift
