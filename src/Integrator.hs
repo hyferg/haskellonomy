@@ -14,7 +14,7 @@ euler :: (BasePoint m, LieGroup l g) =>
 euler w (m, g) m' = (m', g <| g')
   where
     dm = m' ^-^ m
-    e' = w m dm
+    e' = _invert $ w m dm
     g' = exponential e'
 
 
@@ -31,7 +31,7 @@ rk w (m, g) m' = (m', g <| g')
     k3 = w $ m ^+^ (dm ^* 0.5)
     k4 = w $ m ^+^ (dm ^* 1.0)
 
-    e' = (1.0/6.0) *^ (
+    e' = _invert $ (1.0/6.0) *^ (
       (k1 dm) ^+^
       (k2 dm ^* 2) ^+^
       (k3 dm ^* 2) ^+^
