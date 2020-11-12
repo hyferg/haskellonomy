@@ -10,7 +10,7 @@ module HoloTypes (
   BasePoint,
   LieAlgebra,
   LieGroup,
-  exponential,
+  exponential, (|>), (<|)
   ) where
 
 import Data.Group
@@ -30,5 +30,10 @@ class (VectorSpace m) => BasePoint m
 
 class (VectorSpace l) => LieAlgebra l
 
-class (LieAlgebra l, Group g) => LieGroup l g where
+class (LieAlgebra l, Group g) => LieGroup l g | g -> l where
   exponential :: l -> g
+  (|>) :: g -> g -> g
+  (<|) :: g -> g -> g
+
+  (|>) = (<>)
+  (<|) e g = (invert g) |> e

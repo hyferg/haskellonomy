@@ -11,7 +11,7 @@ euler :: (BasePoint m, LieGroup l g) =>
 
   (m -> m -> l) -> (m, g) -> m -> (m, g)
 
-euler w (m, g) m' = (m', g' <> g)
+euler w (m, g) m' = (m', g <| g')
   where
     dm = m' ^-^ m
     e' = w m dm
@@ -22,7 +22,7 @@ rk :: (BasePoint m, LieGroup l g) =>
 
   (m -> m -> l) -> (m, g) -> m -> (m, g)
 
-rk w (m, g) m' = (m', g' <> g )
+rk w (m, g) m' = (m', g <| g')
   where
     dm = m' ^-^ m
 
