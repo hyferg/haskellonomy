@@ -19,10 +19,9 @@ This program is at it's core an ODE solver that respects some group action. The 
 ## What can't this do yet
 
 Further extensions could be ...
-- Make it run on hairy balls. That is to say base manifolds that don't admit a global section of the tangent bundle
 - Add curvature to the equation
-- Link up generic associated bundles with right group action
-- Link up associated vector bundles with reps of the right action
+- Link up associated vector bundles with reps of the left action
+- Make it run on hairy balls. That is to say base manifolds that don't admit a global section of the tangent bundle
 
 ## How to add a new base manifold or fiber type
 

@@ -1,5 +1,5 @@
 -- | Euler and Runge-Kutta integrators.
--- | These use the group action <> for stepped changes.
+-- | These use the right group action (<|) for stepped changes.
 
 module Integrator
   ( euler, rk
