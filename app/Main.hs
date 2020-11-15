@@ -1,7 +1,8 @@
 module Main where
 
-import U1Curve
+import LiftIndex
+import Format
 
 main :: IO ()
 main = do
-  writeFile "./app/liftU1.txt" lift
+  writeFile "./data/liftIndex.txt" (showcsv lifted)
