@@ -37,8 +37,6 @@ ms :: [R2]
 initial :: (R2, R1_PM)
 initial = (m, g0)
 
---
-
 -- The main algorithm is a scan over the base curve.
 -- This approximates the path ordered exponential
 -- solution to the ODE for the curve in g.
@@ -50,14 +48,14 @@ initial = (m, g0)
 --  (m0, g0) `lift` m1,
 -- ((m0, g0) `lift` m1) `lift` m2, ...]
 --
--- ..or..
+-- ..equivalently..
 --
 -- scanl lift (g0, m0) [m1, m2, ...] = [
 -- (m0, g0),
 -- (m1, g1 <> g0),
 -- (m2, g2 <> g1 <> g0),
 -- ...
--- (mn, gn <> .. <> g1 <> g0),
+-- (mn, gn <> .. <> g1 <> g0) ]
 --
 -- where <> is the group action and `mn` is the last point
 -- in the base manifold curve

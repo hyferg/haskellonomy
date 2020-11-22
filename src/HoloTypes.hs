@@ -35,5 +35,6 @@ class (LieAlgebra l, Group g) => LieGroup l g | g -> l where
   (|>) :: g -> g -> g
   (<|) :: g -> g -> g
 
+  -- right and left group actions
   (|>) = (<>)
   (<|) e g = (invert g) |> e

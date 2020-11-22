@@ -1,12 +1,10 @@
--- |
+-- | string formatting for export
 
 module Format where
 import Data.List
 
 data Row = Row [Float]
 data Rows = Rows [Row]
-
--- string formatting methods
 
 class ShowCSV x where
   showcsv :: x -> String

@@ -1,5 +1,10 @@
 -- | Euler and Runge-Kutta integrators.
--- | These use the right group action (<|) for stepped changes.
+-- | These use the left group action for stepped changes on assc. bundles.
+--
+-- | The ability to choose some linear left action lets us sneak in
+-- | negative signs where desired.
+--
+-- | In principle for a principal bundle, the right action could be used.
 
 module Integrator
   ( euler, rk

@@ -1,4 +1,5 @@
--- |
+-- | The Index Number Problem: A Differential Geometric Approach.
+-- | Numeric lift of the toy example.
 
 module LiftIndex (lifted) where
 
@@ -17,9 +18,6 @@ dq _ (R1 dt) = R2 (1 * dt) (-1 * dt)
 p :: R1 -> R2
 p (R1 t) = R2 (-10 * t + 100) (9 * t + 92)
 
---dp :: R1 -> R1 -> R2
---dp _ (R1 dt) = R2 (-10 * dt) (9 * dt)
-
 dot :: R2 -> R2 -> Float
 dot (R2 a b) (R2 c d) = a*c + b*d
 
@@ -31,7 +29,7 @@ w t dt = TeR1_PM (delta / economy)
 
 -- Lambda(0) = 1
 -- The index at t=0 is of course nothing
--- Lambda(1) ~= 0.9947
+-- Lambda(1) should be approx. 0.9947
 g0 :: R1_PM
 g0 = R1_PM 1
 
