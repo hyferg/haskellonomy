@@ -19,9 +19,9 @@ This program is at it's core an ODE solver that respects some group action. The 
 ## What can't this do yet
 
 Further extensions could be ...
-- Add curvature to the equation
-- Link up associated vector bundles with reps of the left action
-- Make it run on hairy balls. That is to say base manifolds that don't admit a global section of the tangent bundle
+- Levi-Civita connections
+- Something with curvature
+- General parallel transport of baskets (not just the index multiple)
 
 ## How to add a new base manifold or fiber type
 
