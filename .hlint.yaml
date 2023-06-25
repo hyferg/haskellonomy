@@ -1,0 +1,2 @@
+- warn: { name: RedundantBrackets, within: brackets }
+  severity: ignore
