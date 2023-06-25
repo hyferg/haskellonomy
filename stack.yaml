@@ -17,8 +17,7 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver:
-  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/19.yaml
+resolver: ghc-9.2.7
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -30,7 +29,7 @@ resolver:
 #   - auto-update
 #   - wai
 packages:
-- .
+  - .
 # Dependency packages to be pulled from upstream that are not in the resolver.
 # These entries can reference officially published versions as well as
 # forks / in-progress versions pinned to a git hash. For example:
@@ -43,7 +42,6 @@ packages:
 # extra-deps: []
 extra-deps:
   - groups-0.5@sha256:6a0b92ffd2828607fcd62c9f1927a7e5e6f6ec9ea90c877789478132c0290f63,690
-
 # Override default flag values for local packages and extra-deps
 # flags: {}
 
