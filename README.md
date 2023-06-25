@@ -12,6 +12,7 @@ This follows from initial work done by Eric Weinstein.
 This program is at its core an ODE solver that respects some group action. The algorithms are in terms of typeclasses for fibers and base manifolds.
 
 - Fibers implemented
+
   - U(1)
   - Positive reals under multiplication
   - Reals under addition
@@ -20,6 +21,7 @@ This program is at its core an ODE solver that respects some group action. The a
   - R1, R2, R3
 
 ## What it can't do yet
+
 - Levi-Civita connections
 - Base manifolds besides R^n
 - General parallel transport of economic [ **src/LiftIndex** ] baskets (not just the index multiple)
@@ -36,7 +38,7 @@ The typeclasses are in [ **src/HoloTypes** ].
   - And now you have a LieGroup
 
 - Manifold
-  - Needs to have VectorSpace and BasePoint
+  - Needs to have ManifoldPoint
 
 ## How to run the program
 
