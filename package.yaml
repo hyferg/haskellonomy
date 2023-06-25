@@ -45,5 +45,6 @@ tests:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
+      - -fno-warn-redundant-brackets
     dependencies:
       - haskellonomy

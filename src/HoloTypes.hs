@@ -1,7 +1,6 @@
 -- | Constraints for objects used in a fiber integrator.
 -- | These keep everything safe and closer to rigor than not.
 
-{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FunctionalDependencies #-}
 
 module HoloTypes (
@@ -22,7 +21,7 @@ class VectorSpace v where
   (^+^), (^-^)  :: v -> v -> v
   _invert :: v -> v
 
-  (^-^) p1 p2 = p1 ^+^ (_invert p2)
+  (^-^) p1 p2 = p1 ^+^ _invert p2
   _invert p1 = origin ^-^ p1
 
 -- in a Euclidean neighborhood
@@ -37,4 +36,4 @@ class (LieAlgebra l, Group g) => LieGroup l g | g -> l where
 
   -- right and left group actions
   (|>) = (<>)
-  (<|) e g = (invert g) |> e
+  (<|) e g = invert g |> e

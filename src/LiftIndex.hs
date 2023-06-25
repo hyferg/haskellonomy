@@ -37,7 +37,7 @@ ts :: [Float]
 ts = [0, 0.01 .. 1]
 
 gamma :: Float -> R1
-gamma t = R1 t
+gamma = R1
 
 m :: R1
 ms :: [R1]
