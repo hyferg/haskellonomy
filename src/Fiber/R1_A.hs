@@ -7,8 +7,8 @@ module Fiber.R1_A where
 import Data.Group
 import HoloTypes
 
-data R1_A = R1_A Float deriving (Show)
-data TeR1_A = TeR1_A Float deriving (Show)
+newtype R1_A = R1_A Float deriving (Show)
+newtype TeR1_A = TeR1_A Float deriving (Show)
 
 instance Semigroup R1_A where
   (<>) (R1_A a) (R1_A b) = R1_A (a + b)

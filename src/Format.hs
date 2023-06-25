@@ -3,8 +3,8 @@
 module Format where
 import Data.List
 
-data Row = Row [Float]
-data Rows = Rows [Row]
+newtype Row = Row [Float]
+newtype Rows = Rows [Row]
 
 class ShowCSV x where
   showcsv :: x -> String
@@ -13,13 +13,13 @@ class ShowJSON x where
   showjson :: x -> String
 
 instance ShowCSV Row where
-  showcsv (Row xs) = (++ "\n") $ concat (intersperse " " (map show xs))
+  showcsv (Row xs) = (++ "\n") $ unwords (map show xs)
 
 instance ShowCSV Rows where
-  showcsv (Rows xs) = concat $ map showcsv xs
+  showcsv (Rows xs) = concatMap showcsv xs
 
 instance ShowJSON Row where
-  showjson (Row xs) = "[" ++ (concat $ intersperse "," (map show xs)) ++ "]"
+  showjson (Row xs) = "[" ++ intercalate "," (map show xs) ++ "]"
 
 instance ShowJSON Rows where
-  showjson (Rows xs) = "[" ++ (concat $ intersperse "," (map showjson xs)) ++ "]"
+  showjson (Rows xs) = "[" ++ intercalate "," (map showjson xs) ++ "]"

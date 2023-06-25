@@ -7,8 +7,8 @@ module Fiber.R1_PM where
 import Data.Group
 import HoloTypes
 
-data R1_PM = R1_PM Float deriving (Show)
-data TeR1_PM = TeR1_PM Float deriving (Show)
+newtype R1_PM = R1_PM Float deriving (Show)
+newtype TeR1_PM = TeR1_PM Float deriving (Show)
 
 instance Semigroup R1_PM where
   (<>) (R1_PM a) (R1_PM b) = R1_PM (a * b)

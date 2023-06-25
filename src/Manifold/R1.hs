@@ -4,7 +4,7 @@ module Manifold.R1 where
 
 import HoloTypes
 
-data R1 = R1 Float deriving (Show)
+newtype R1 = R1 Float deriving (Show)
 
 instance VectorSpace R1 where
   origin = R1 0

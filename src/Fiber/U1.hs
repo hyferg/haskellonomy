@@ -8,8 +8,8 @@ import Data.Group
 import Data.Complex
 import HoloTypes
 
-data U1 = U1 (Complex Float) deriving (Show)
-data TeU1 = TeU1 Float  deriving (Show)
+newtype U1 = U1 (Complex Float) deriving (Show)
+newtype TeU1 = TeU1 Float  deriving (Show)
 
 instance Semigroup U1 where
   (<>) (U1 a) (U1 b) = U1 (a * b)

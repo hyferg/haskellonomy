@@ -6,6 +6,7 @@ import Integrator (rk)
 import Manifold.R2
 import Fiber.R1_PM
 import Data.List
+import Format
 
 -- initial group section
 g0 :: R1_PM
@@ -65,10 +66,10 @@ lifted = scanl (rk w) initial ms
 
 -- format string for numpy.loadtxt
 
-lift :: String
+lift :: Rows
 lift = Rows $ map (\(R2 a b, R1_PM c) -> Row [a, b, c]) lifted
 
-hori :: String
+hori :: Rows
 hori = Rows $ horizontals lifted
 
 -- (x, y, z, unit dx, unit dy)
