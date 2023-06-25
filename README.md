@@ -5,7 +5,7 @@
 - [U1 Animation](https://www.youtube.com/watch?v=wT2hbgcB6DE)
 - [R1 Animation](https://www.youtube.com/watch?v=xWdUWk9Hexg)
 
-Go check out [ **src/LiftClassic.hs** ] to see it in action.
+Go check out [ **src/LiftClassic** ] to see it in action.
 
 This follows from initial work done by Eric Weinstein.
 
@@ -22,7 +22,7 @@ This program is at its core an ODE solver that respects some group action. The a
 ## What it can't do yet
 - Levi-Civita connections
 - Base manifolds besides R^n
-- General parallel transport of economic (src/LiftIndex.hs) baskets (not just the index multiple)
+- General parallel transport of economic [ **src/LiftIndex** ] baskets (not just the index multiple)
 
 ## How to add a new base manifold or fiber type
 
