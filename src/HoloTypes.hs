@@ -6,7 +6,7 @@
 module HoloTypes (
   VectorSpace,
   (^*), (*^), (^+^), (^-^), _invert, origin,
-  BasePoint,
+  ManifoldPoint,
   LieAlgebra,
   LieGroup,
   exponential, (|>), (<|)
@@ -25,10 +25,12 @@ class VectorSpace v where
   _invert p1 = origin ^-^ p1
 
 -- in a Euclidean neighborhood
-class (VectorSpace m) => BasePoint m
+class (VectorSpace m) => ManifoldPoint m
 
 class (VectorSpace l) => LieAlgebra l
 
+-- The g -> l constraint states that the Lie group uniquely determines the Lie algebra
+-- See the Lie group–Lie algebra correspondence
 class (LieAlgebra l, Group g) => LieGroup l g | g -> l where
   exponential :: l -> g
   (|>) :: g -> g -> g

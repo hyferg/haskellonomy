@@ -13,4 +13,4 @@ instance VectorSpace R2 where
   (*^) s (R2 a b) = R2 (s * a) (s * b)
   _invert (R2 a b) = R2 (-a) (-b)
 
-instance BasePoint R2
+instance ManifoldPoint R2
