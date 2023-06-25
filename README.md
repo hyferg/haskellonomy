@@ -2,23 +2,26 @@
 
 ![example](media/header.png)
 
+- [U1 Animation](https://www.youtube.com/watch?v=wT2hbgcB6DE)
+- [R1 Animation](https://www.youtube.com/watch?v=xWdUWk9Hexg)
+
 Go check out [ **src/LiftClassic.hs** ] to see it in action.
 
 This follows from initial work done by Eric Weinstein.
 
-This program is at its core an ODE solver that respects some group action. The algorithms are in terms of typeclasses for bases and fibers. Some reference implementations are visible for ...
+This program is at its core an ODE solver that respects some group action. The algorithms are in terms of typeclasses for fibers and base manifolds.
 
-- Fibers:
+- Fibers implemented
   - U(1)
   - Positive reals under multiplication
   - Reals under addition
 
-- Base manifolds:
+- Base manifolds imlemented
   - R1, R2, R3
 
 ## What it can't do yet
 - Levi-Civita connections
-- Other base manifolds beyond R^n
+- Base manifolds besides R^n
 - General parallel transport of economic (src/LiftIndex.hs) baskets (not just the index multiple)
 
 ## How to add a new base manifold or fiber type
