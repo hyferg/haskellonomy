@@ -16,7 +16,7 @@ This program is at its core an ODE solver that respects some group action. The a
   - Positive reals under multiplication
   - Reals under addition
 
-- Base manifolds imlemented
+- Base manifolds implemented
   - R1, R2, R3
 
 ## What it can't do yet
