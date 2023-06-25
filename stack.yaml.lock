@@ -7,14 +7,8 @@ packages:
 - completed:
     hackage: groups-0.5@sha256:6a0b92ffd2828607fcd62c9f1927a7e5e6f6ec9ea90c877789478132c0290f63,690
     pantry-tree:
-      size: 207
       sha256: d53a6a321bba9c4b107a718e8ab062b532193e8d18f98a75649f905816cc781e
+      size: 207
   original:
     hackage: groups-0.5@sha256:6a0b92ffd2828607fcd62c9f1927a7e5e6f6ec9ea90c877789478132c0290f63,690
-snapshots:
-- completed:
-    size: 532177
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/19.yaml
-    sha256: d2b828ecf50386841d0c5700b58d38566992e10d63a062af497ab29ab031faa1
-  original:
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/19.yaml
+snapshots: []
