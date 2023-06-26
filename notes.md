@@ -9,3 +9,4 @@
   - Trivial for R^n, just 'add' the vector to the manifold point
   - For Lie group manifolds, use an exponential map
   - For curved manifolds, use parallel transport connection
+  - Ideally the trivial and the Lie group cases are just special cases of a parallel transport connection
