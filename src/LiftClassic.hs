@@ -1,4 +1,5 @@
 -- | Params from Eric Weinstein's lifter
+
 {-# LANGUAGE MultiParamTypeClasses #-}
 
 module LiftClassic (lift, hori, lifted_rows) where

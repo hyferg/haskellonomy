@@ -7,7 +7,7 @@
 -- | In principle for a principal bundle, the right action could be used.
 
 module Integrator
-  ( euler, rk
+  ( euler, rk, eulerConnection
   ) where
 
 import HoloTypes

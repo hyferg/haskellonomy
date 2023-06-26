@@ -4,7 +4,7 @@ import LiftIndex (lifted_rows)
 import Format
 import System.Directory (canonicalizePath)
 
-path = "./data-out/liftClassic.txt"
+path = "./data-out/liftIndex.txt"
 theLift = lifted_rows
 
 -- write lift to file and log to console that we're done
