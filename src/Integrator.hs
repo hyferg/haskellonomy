@@ -11,6 +11,14 @@ module Integrator
   ) where
 
 import HoloTypes
+import Data.Group
+
+-- eulerConnection :: (Connection m te le, LieGroup le g) =>  (m, g) -> m -> (m, g)
+eulerConnection (m, g) m' = (m', g' |> g)
+  where
+    dm = m' ^-^ m
+    e' = w m dm
+    g' = exponential e'
 
 euler :: (ManifoldPoint m, LieGroup l g) =>
 

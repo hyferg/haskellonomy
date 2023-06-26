@@ -1,7 +1,7 @@
 -- | The Index Number Problem: A Differential Geometric Approach.
 -- | Numeric lift of the toy example.
 
-module LiftIndex (lifted) where
+module LiftIndex (lifted_rows) where
 
 import Integrator (rk)
 import Fiber.R1_PM
@@ -49,5 +49,5 @@ initial = (m, g0)
 lift :: [(R1, R1_PM)]
 lift = scanl (rk w) initial ms
 
-lifted :: Rows
-lifted = Rows $ map (\(R1 a, R1_PM b) -> Row [a, b]) lift
+lifted_rows :: Rows
+lifted_rows = Rows $ map (\(R1 a, R1_PM b) -> Row [a, b]) lift

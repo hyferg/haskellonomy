@@ -33,8 +33,8 @@ ms :: [R2]
 initial :: (R2, U1)
 initial = (m, g0)
 
-lifted :: [(R2, U1)]
-lifted = scanl (rk w) initial ms
+lift :: [(R2, U1)]
+lift = scanl (rk w) initial ms
 
-lift :: Rows
-lift = Rows $ map (\(R2 a b, U1 c) -> Row [a, b, phase c]) lifted
+lifted_rows :: Rows
+lifted_rows = Rows $ map (\(R2 a b, U1 c) -> Row [a, b, phase c]) lift

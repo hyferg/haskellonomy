@@ -9,7 +9,8 @@ module HoloTypes (
   ManifoldPoint,
   LieAlgebra,
   LieGroup,
-  exponential, (|>), (<|)
+  exponential, (|>), (<|),
+  Connection, w
   ) where
 
 import Data.Group
@@ -29,7 +30,10 @@ class (VectorSpace m) => ManifoldPoint m
 
 class (VectorSpace l) => LieAlgebra l
 
--- The g -> l constraint states that the Lie group uniquely determines the Lie algebra
+class (VectorSpace m, VectorSpace te, LieAlgebra le) => Connection m te le where
+  w :: m -> te -> le
+
+-- The Lie group uniquely determines the Lie algebra which is encoded in 'g -> l'
 -- See the Lie group–Lie algebra correspondence
 class (LieAlgebra l, Group g) => LieGroup l g | g -> l where
   exponential :: l -> g
