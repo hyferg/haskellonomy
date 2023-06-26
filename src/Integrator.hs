@@ -10,7 +10,6 @@ module Integrator ( euler, rk) where
 import HoloTypes (Connection, LieGroup, (|>), (^-^), (^+^), (^*), (*^), w, exponential)
 import Data.Group
 
--- eulerConnection :: (Connection m te le, LieGroup le g) =>  (m, g) -> m -> (m, g)
 euler (m, g) m' = (m', g' |> g)
   where
     dm = m' ^-^ m
