@@ -5,7 +5,7 @@
 
 module LiftIndex (lifted_rows) where
 
-import Integrator (rk, eulerConnection)
+import Integrator (rk, eulerConnection, rkConnection)
 import Fiber.R1_PM
 import Manifold.R1
 import Manifold.R2
@@ -30,13 +30,6 @@ instance Connection R1 R1 TeR1_PM where
       delta = dot (p t) (dq t dt)
       economy = dot (p t) (q t)
 
-
--- w :: R1 -> R1 -> TeR1_PM
--- w t dt = TeR1_PM (delta / economy)
---   where
---     delta = dot (p t) (dq t dt)
---     economy = dot (p t) (q t)
-
 -- Lambda(0) = 1
 -- The index at t=0 is of course nothing
 -- Lambda(1) should be approx. 0.9947
@@ -57,7 +50,7 @@ initial :: (R1, R1_PM)
 initial = (m, g0)
 
 lift :: [(R1, R1_PM)]
-lift = scanl (eulerConnection) initial ms
+lift = scanl (rkConnection) initial ms
 
 lifted_rows :: Rows
 lifted_rows = Rows $ map (\(R1 a, R1_PM b) -> Row [a, b]) lift
