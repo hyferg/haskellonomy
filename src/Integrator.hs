@@ -6,11 +6,8 @@
 --
 -- | In principle for a principal bundle, the right action could be used.
 
-module Integrator
-  ( euler, rk
-  ) where
-
-import HoloTypes
+module Integrator ( euler, rk) where
+import HoloTypes (Connection, LieGroup, (|>), (^-^), (^+^), (^*), (*^), w, exponential)
 import Data.Group
 
 -- eulerConnection :: (Connection m te le, LieGroup le g) =>  (m, g) -> m -> (m, g)
