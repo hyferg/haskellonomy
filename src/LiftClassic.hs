@@ -31,15 +31,6 @@ instance Connection (R2) (R2) (TeR1_PM) where
         w0 = (-y)/(1+x*y)
         w1 = 0
 
--- local representation of a connection, a YM field
--- w :: R2 -> R2Tangent -> TeR1_PM
--- w (R2 x y) (R2 dx dy) = TeR1_PM (w0*dx + w1*dy)
---     where
---       w0 = (-y)/(1+x*y)
---       w1 = 0
-
---
-
 m  ::  R2
 ms :: [R2]
 (m:ms) = map gamma ts
@@ -71,7 +62,7 @@ initial = (m, g0)
 -- in the base manifold curve
 
 lift :: [(R2, R1_PM)]
-lift = scanl (rk w) initial ms
+lift = scanl (rk) initial ms
 
 -- format string for numpy.loadtxt
 

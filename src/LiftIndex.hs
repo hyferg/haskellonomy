@@ -5,7 +5,7 @@
 
 module LiftIndex (lifted_rows) where
 
-import Integrator (rk, eulerConnection, rkConnection)
+import Integrator (rk)
 import Fiber.R1_PM
 import Manifold.R1
 import Manifold.R2
@@ -50,7 +50,7 @@ initial :: (R1, R1_PM)
 initial = (m, g0)
 
 lift :: [(R1, R1_PM)]
-lift = scanl (rkConnection) initial ms
+lift = scanl (rk) initial ms
 
 lifted_rows :: Rows
 lifted_rows = Rows $ map (\(R1 a, R1_PM b) -> Row [a, b]) lift
